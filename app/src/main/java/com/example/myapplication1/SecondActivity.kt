@@ -3,6 +3,7 @@ package com.example.myapplication1
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class SecondActivity : AppCompatActivity() {
@@ -19,14 +20,15 @@ class SecondActivity : AppCompatActivity() {
         val recipientEmail = intent.getStringExtra("RecipientEmailValue")
         val message = intent.getStringExtra("MessageValue")
 
-        receivedEmail.setText(email)
-        receivedRecipientEmail.setText(recipientEmail)
+        receivedEmail.setText("From: " + email)
+        receivedRecipientEmail.setText("To: " +recipientEmail)
         receivedMessage.setText(message)
 
         clearButton.setOnClickListener {
             receivedEmail.setText("")
             receivedRecipientEmail.setText("")
             receivedMessage.setText("")
+            Toast.makeText(this, "All Info Cleared", Toast.LENGTH_SHORT).show()
         }
     }
 
